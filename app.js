@@ -1,4 +1,4 @@
-let base_url = "https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies";
+let base_url = "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies";
 
 let dropdowns = document.querySelectorAll(".dropdown select");
 let btn = document.querySelector("form button");
@@ -32,10 +32,10 @@ const updateExchageRate = async ()=>{
         amtVal = 1;
         amount.value = "1";
     }
-    let realUrl = `${base_url}/${formCurr.value.toLowerCase()}/${toCurr.value.toLowerCase()}.json`;
+    let realUrl = `${base_url}/${formCurr.value.toLowerCase()}.json`;
     let response = await fetch(realUrl);
     let data = await response.json();
-    let rate = data[toCurr.value.toLowerCase()];
+    let rate = data[formCurr.value.toLowerCase()][toCurr.value.toLowerCase()];
     let total = amtVal * rate;
     msgPara.innerText = `${amtVal} ${formCurr.value} = ${total} ${toCurr.value}`;
 }
